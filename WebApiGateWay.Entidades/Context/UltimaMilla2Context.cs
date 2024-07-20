@@ -2,28 +2,34 @@
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using Pomelo.EntityFrameworkCore.MySql.Scaffolding.Internal;
+using Microsoft.Extensions.Configuration;
 
 namespace WebApiGateWay.Entidades.Context;
 
 public partial class UltimaMilla2Context : DbContext
 {
-    public UltimaMilla2Context()
-    {
-    }
+    private readonly IConfiguration _configuration;
 
-    public UltimaMilla2Context(DbContextOptions<UltimaMilla2Context> options)
+    public UltimaMilla2Context(DbContextOptions<UltimaMilla2Context> options, IConfiguration configuration)
         : base(options)
     {
+        _configuration = configuration;
     }
 
     public virtual DbSet<Customer> Customers { get; set; }
 
     public virtual DbSet<User> Users { get; set; }
 
+    //para utilizar settingjson
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseMySql("server=localhost;database=ultima_milla_2;user=root", Microsoft.EntityFrameworkCore.ServerVersion.Parse("10.4.32-mariadb"));
-
+    {
+        if (!optionsBuilder.IsConfigured)
+        {
+            var connectionString = _configuration.GetConnectionString("DefaultConnection");
+            optionsBuilder.UseMySql(connectionString, Microsoft.EntityFrameworkCore.ServerVersion.Parse("10.4.32-mariadb"));
+        }
+    }
+    /// 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder

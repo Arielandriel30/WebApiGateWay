@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace WebApiGateWay.Entidades.DbContext;
+namespace WebApiGateWay.Entidades.Context;
 
 public partial class User
 {
