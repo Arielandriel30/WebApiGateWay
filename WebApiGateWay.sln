@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34723.18
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApiGateWay", "WebApiGateWay\WebApiGateWay.csproj", "{7353D351-86F4-40C7-9620-14C4B54BEE98}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApiGateWay.Api", "WebApiGateWay\WebApiGateWay.Api.csproj", "{7353D351-86F4-40C7-9620-14C4B54BEE98}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApiGateWay.Entidades", "WebApiGateWay.Entidades\WebApiGateWay.Entidades.csproj", "{BD455F01-7D82-459D-ABCA-38222A8A10BF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApiGateWay.Services", "WebApiGateWay.Services\WebApiGateWay.Services.csproj", "{13D0DB46-BE50-4F1E-811F-01B2DBEF8A1E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{7353D351-86F4-40C7-9620-14C4B54BEE98}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7353D351-86F4-40C7-9620-14C4B54BEE98}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7353D351-86F4-40C7-9620-14C4B54BEE98}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BD455F01-7D82-459D-ABCA-38222A8A10BF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BD455F01-7D82-459D-ABCA-38222A8A10BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BD455F01-7D82-459D-ABCA-38222A8A10BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BD455F01-7D82-459D-ABCA-38222A8A10BF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{13D0DB46-BE50-4F1E-811F-01B2DBEF8A1E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{13D0DB46-BE50-4F1E-811F-01B2DBEF8A1E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{13D0DB46-BE50-4F1E-811F-01B2DBEF8A1E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{13D0DB46-BE50-4F1E-811F-01B2DBEF8A1E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
