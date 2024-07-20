@@ -6,3 +6,5 @@ y Pomelo.EntityFrameworkCore.MySql.Design, despues de esto, hacer referencia en 
 Ahora si, ir a herramientas, administrador de paquetes NuGet, y abrir la consola, una vez ahí, en proyecto predeterminado, seleccionar el de Entidades, pegar el comando con los datos correspondientes
 a nuestra base de datos. Recordar que luego de "-OutputDir" en el comando, debe ir el nombre de la carpeta que creamos dentro del proyecto entidades, si no esta creado, lo creara automaticamente.
 Si no se pone esta directiva, se creara el archivo suelto en el proyecto. Recordar NO ponerle a la carpeta: "DbContext", para evitar confliectos.
+
+Instalar tambien System.IdentityModel.Tokens.Jwt.
