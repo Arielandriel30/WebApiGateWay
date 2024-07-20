@@ -8,12 +8,12 @@ namespace WebApiGateWay.Entidades.Context;
 
 public partial class UltimaMilla2Context : DbContext
 {
-    private readonly IConfiguration _configuration;
+   
 
-    public UltimaMilla2Context(DbContextOptions<UltimaMilla2Context> options, IConfiguration configuration)
+    public UltimaMilla2Context(DbContextOptions<UltimaMilla2Context> options)
         : base(options)
     {
-        _configuration = configuration;
+      
     }
 
     public virtual DbSet<Customer> Customers { get; set; }
@@ -21,15 +21,15 @@ public partial class UltimaMilla2Context : DbContext
     public virtual DbSet<User> Users { get; set; }
 
     //para utilizar settingjson
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-    {
-        if (!optionsBuilder.IsConfigured)
-        {
-            var connectionString = _configuration.GetConnectionString("DefaultConnection");
-            optionsBuilder.UseMySql(connectionString, Microsoft.EntityFrameworkCore.ServerVersion.Parse("10.4.32-mariadb"));
-        }
-    }
-    /// 
+    //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    //{
+    //    if (!optionsBuilder.IsConfigured)
+    //    {
+    //        var connectionString = _configuration.GetConnectionString("DefaultConnection");
+    //        optionsBuilder.UseMySql(connectionString, Microsoft.EntityFrameworkCore.ServerVersion.Parse("10.4.32-mariadb"));
+    //    }
+    //}
+    ///// 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder

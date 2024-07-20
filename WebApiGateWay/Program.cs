@@ -14,7 +14,8 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 //Servicios e Interfaces
-builder.Services.AddSingleton<IAuthorizationMiddlewareService, AuthorizationMiddlewareService>();
+//builder.Services.AddTransient<IAuthorizationMiddlewareService, AuthorizationMiddlewareService>();
+
 builder.Services.AddSingleton<IJwtService, JwtService>();
 
 var app = builder.Build();
