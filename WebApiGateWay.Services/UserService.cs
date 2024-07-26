@@ -2,22 +2,15 @@ using WebApiGateWay.Entidades.Context;
 using Microsoft.EntityFrameworkCore;
 namespace WebApiGateWay.Services;
 
-public class UserService
+public class UserService(UltimaMilla2Context context)
 {
-    private readonly UltimaMilla2Context _context;
-
-    public UserService( UltimaMilla2Context context)
-    {
-        _context = context;
-    }
-
     public async Task<User?> GetUserCustomer(Dictionary<string, string> claims)
     {
         var userId = ulong.Parse(claims["user_id"]);
         var customerTag = claims["customer_tag"];
         var device = claims["device"];
 
-        var user = await _context.Users
+        var user = await context.Users
             .Include(u => u.Customer)
             .Where(u => u.UserId == userId && u.Customer.Tag == customerTag && u.Device == device && u.Active == true)
             .FirstOrDefaultAsync();
@@ -31,7 +24,7 @@ public class UserService
         var customerTag = claims["customer_tag"];
         var device = claims["device"];
         // Buscar el usuario que cumple con los criterios especificados
-        var user = await _context.Users
+        var user = await context.Users
             .Include(u => u.Customer)
             .FirstOrDefaultAsync(u => u.UserId == userId && u.Customer.Tag == customerTag && u.Device == device && u.Active == true);
 
@@ -41,7 +34,7 @@ public class UserService
             user.TokensValidSince = DateTime.UtcNow;
         
             // Guardar los cambios en la base de datos
-            await _context.SaveChangesAsync();
+            await context.SaveChangesAsync();
         
             return (true, user);
         }
