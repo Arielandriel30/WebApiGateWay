@@ -5,6 +5,7 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Security.Claims;
 using System.Text;
+using dotenv.net;
 using System.Threading.Tasks;
 
 namespace WebApiGateWay.Services
@@ -17,7 +18,21 @@ namespace WebApiGateWay.Services
     }
     public class JwtService : IJwtService
     {
-        private readonly string _secretKey = "Clve_Secreta";
+        
+        private readonly string _secretKey;
+
+        public JwtService()
+        {
+            // Carga el archivo .env
+            DotEnv.Load();
+            // Obtén el valor de la variable de entorno
+            _secretKey = Environment.GetEnvironmentVariable("SECRET_KEY_JWT");
+            
+            if (string.IsNullOrEmpty(_secretKey))
+            {
+                throw new Exception("SecretKeyJwt no está configurado en el archivo .env.");
+            }
+        }
 
         public string GenerateToken(Dictionary<string, object> claims)
         {
