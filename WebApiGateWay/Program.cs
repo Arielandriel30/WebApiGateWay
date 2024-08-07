@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using WebApiGateWay.Entidades.Context;
 using WebApiGateWay.Services;
+using static WebApiGateWay.Services.UserService;
 
 var builder = WebApplication.CreateBuilder(args);
 // Configurar DbContext con la cadena de conexión
@@ -15,8 +16,8 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 //Servicios e Interfaces
 //builder.Services.AddTransient<IAuthorizationMiddlewareService, AuthorizationMiddlewareService>();
-
-builder.Services.AddSingleton<IJwtService, JwtService>();
+builder.Services.AddScoped<IJwtService, JwtService>();
+builder.Services.AddScoped<IUserService, UserService>();
 
 var app = builder.Build();
 

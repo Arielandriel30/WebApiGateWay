@@ -1,9 +1,13 @@
 using WebApiGateWay.Entidades.Context;
 using Microsoft.EntityFrameworkCore;
 namespace WebApiGateWay.Services;
-
-public class UserService
+public interface IUserService
 {
+    public Task<User?> GetUserCustomer(Dictionary<string, string> claims);
+}
+public class UserService : IUserService
+{
+   
     private readonly UltimaMilla2Context _context;
 
     public UserService( UltimaMilla2Context context)
